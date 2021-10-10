@@ -19,8 +19,8 @@ export interface CardProps {
 
 const Card: FC<CardProps> = ({ data, onDelete }) => {
   return (
-    <Link to={`/${data.id}`}>
-      <Box mb={16}>
+    <Box mb={16}>
+      <Link to={`/${data.id}`}>
         <Box width="100%" pb="100%" position="relative" overflow="hidden">
           <Image
             src={renderImage(data.image_id, "md")}
@@ -31,33 +31,35 @@ const Card: FC<CardProps> = ({ data, onDelete }) => {
             position="absolute"
           />
         </Box>
-        <Box px={20} py={12} flexDirection="column">
-          <Box alignItems="flex-start" justifyContent="space-between" mb={4}>
-            <Box a="span" flex="1" mr={24}>
+      </Link>
+      <Box px={20} py={12} flexDirection="column">
+        <Box alignItems="flex-start" justifyContent="space-between" mb={4}>
+          <Box as="span" flex="1" mr={24}>
+            <Link to={`/${data.id}`}>
               <Text type="H16" bold>
                 {data.title}
               </Text>
-            </Box>
-            <Box as="span">
-              <HeartFillIcon size={20} fill="#E36950" />
-              <Box as="span" ml={8} onClick={onDelete}>
-                <TrashIcon size={20} fill="#E36950" />
-              </Box>
+            </Link>
+          </Box>
+          <Box as="span">
+            <HeartFillIcon size={20} fill="#E36950" />
+            <Box as="span" ml={8} onClick={onDelete}>
+              <TrashIcon size={20} fill="#E36950" />
             </Box>
           </Box>
-          <Text
-            type="B12"
-            color="black500"
-            textAlign="justify"
-            wordBreak="break-word"
-            clamp={2}
-            dangerouslySetInnerHTML={{
-              __html: data.inscriptions || "-",
-            }}
-          />
         </Box>
+        <Text
+          type="B12"
+          color="black500"
+          textAlign="justify"
+          wordBreak="break-word"
+          clamp={2}
+          dangerouslySetInnerHTML={{
+            __html: data.inscriptions || "-",
+          }}
+        />
       </Box>
-    </Link>
+    </Box>
   );
 };
 

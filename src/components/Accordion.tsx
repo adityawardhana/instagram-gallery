@@ -15,6 +15,7 @@ const StyledContent = styled(Box)<{ isOpen: boolean }>`
   position: relative;
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
+  cursor: pointer;
 
   ${({ isOpen }) =>
     isOpen &&
