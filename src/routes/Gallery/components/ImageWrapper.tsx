@@ -22,7 +22,7 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
         width: calc(66.6% - 8px);
         margin-left: 4px;
         margin-right: 4px;
-        padding-bottom: calc(66.6% - 7px);
+        padding-bottom: calc(66.6% - ${isRight ? 7 : 8}px);
         ${isRight && `float: right;`}
       `;
     }
