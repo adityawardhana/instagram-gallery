@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# DEMO
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+DEMO Link: [https://ig-gallery-adityawrdhn.netlify.app/](https://ig-gallery-adityawrdhn.netlify.app/).
 
 ## Available Scripts
 
