@@ -1,24 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import axios from "axios";
+import Box from "./components/Box";
+import Spinner from "./components/Spinner";
+import "./App.css";
+
+
+const Gallery = lazy(() => import("./routes/Gallery"));
+const GalleryDetail = lazy(() => import("./routes/GalleryDetail"));
+const SavedGallery = lazy(() => import("./routes/SavedGallery"));
+const Page404 = lazy(() => import("./routes/Page404"));
+axios.defaults.baseURL = "https://api.artic.edu/api/v1";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="app">
+      <BrowserRouter>
+        <Suspense
+          fallback={
+            <Box
+              width={50}
+              m="auto"
+              position="absolute"
+              top="50%"
+              left="50%"
+              transform="translate(-50%, -50%)"
+            >
+              <Spinner color="black800" />
+            </Box>
+          }
         >
-          Learn React
-        </a>
-      </header>
+          <Switch>
+            <Route path="/" exact component={Gallery} />
+            <Route path="/saved" exact component={SavedGallery} />
+            <Route path="/:id" exact component={GalleryDetail} />
+            <Route path="*" component={Page404} />
+          </Switch>
+        </Suspense>
+      </BrowserRouter>
     </div>
   );
 }
