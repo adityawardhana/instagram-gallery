@@ -19,10 +19,10 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   ${({ isLeft, isRight, gridType }) => {
     if (gridType === "instagrid" && (isLeft || isRight)) {
       return css`
-        width: calc(66.66% - 8px);
+        width: calc(66.6% - 8px);
         margin-left: 4px;
         margin-right: 4px;
-        padding-bottom: calc(66.66% - 8px);
+        padding-bottom: calc(66.6% - 8px);
         ${isRight && `float: right;`}
       `;
     }
